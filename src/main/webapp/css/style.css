@@ -1,77 +1,225 @@
-body{
+
+* {
+    box-sizing: border-box;
+}
+
+body {
     font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 100px;
+    margin: 0;
+    min-height: 100vh;
+    background: #0f1117;
+    color: #f5f5f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
 }
 
-h1{
+h1 {
     font-size: 40px;
+    color: #a78bfa;
 }
 
-a{
+h2 {
+    font-size: 32px;
+    margin-bottom: 16px;
+}
+
+p {
+    color: #b4b7c5;
+    line-height: 1.6;
+}
+
+a {
     display: inline-block;
-    margin: 10px;
-    padding: 10px 20px;
+    margin: 8px;
+    padding: 12px 22px;
     text-decoration: none;
-    background-color: #333;
+    background: #8b5cf6;
     color: white;
-    border-radius: 6px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
 }
 
-a:hover{
-    background-color: #555;
+a:hover {
+    background: #7c3aed;
 }
 
-.from-container{
-    width: 350px;
-    margin: 100px auto;
-    padding: 30px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 32px;
+    background: #191c26;
+    border: 1px solid #2b2f3d;
+    border-radius: 16px;
 }
 
-.from-container h1{
+.form-container h1 {
     text-align: center;
+    font-size: 28px;
 }
 
-.from-container form{
+.form-container form {
     display: flex;
     flex-direction: column;
 }
 
-.from-container label{
-    margin-top: 15px;
-    margin-bottom: 5px;
+.form-container label {
+    margin-top: 16px;
+    margin-bottom: 6px;
+    color: #d4d4dc;
 }
 
-.from-container input{
-    padding: 1opx;
+.form-container input {
+    width: 100%;
+    padding: 12px;
     font-size: 16px;
+    background: #0f1117;
+    color: white;
+    border: 1px solid #383c4b;
+    border-radius: 8px;
 }
 
-.from-container button{
-    margin-top: 20px;
-    padding: 10px;
+.form-container input:focus {
+    outline: 2px solid #8b5cf6;
+    border-color: transparent;
+}
+
+.form-container button {
+    margin-top: 24px;
+    padding: 12px;
     font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: #8b5cf6;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
 }
 
-.from-container button:hover{
-    opacity: 0.8;
+.form-container button:hover {
+    background: #7c3aed;
 }
 
-.from-container input:focus{
-    outline: none;
-    border: 2px solid #333;
-}
-
-.from-container p{
+.form-container p {
     text-align: center;
     margin-top: 20px;
 }
 
-.from-container a{
+.form-container a {
+    margin: 8px 0;
     text-align: center;
-    margin-top: 10;
-    display: block;
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        padding: 24px;
+    }
+}
+.home-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 40px;
+    background: #191c26;
+    border: 1px solid #2b2f3d;
+    border-radius: 16px;
+}
+
+.home-container h1 {
+    margin-bottom: 24px;
+}
+
+.user-details p {
+    margin: 12px 0;
+}
+
+.home-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+    align-items: center;
+}
+
+.home-actions form {
+    margin: 0;
+}
+
+.home-actions button {
+    cursor: pointer;
+}
+
+.home-actions a {
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .home-actions {
+        flex-wrap: wrap;
+    }
+}
+
+
+/* Profile page layout */
+.profile-container {
+    max-width: 760px;
+    margin: 40px auto;
+}
+
+.profile-section {
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid #383c4b;
+}
+
+.profile-section h2 {
+    margin-bottom: 20px;
+}
+
+.profile-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.profile-section label {
+    margin-top: 12px;
+}
+
+.profile-section input:not([type="checkbox"]) {
+    width: 100%;
+    padding: 12px;
+    background: #0f1117;
+    color: #f5f5f7;
+    border: 1px solid #383c4b;
+    border-radius: 8px;
+}
+
+.profile-section input:focus {
+    outline: 2px solid #8b5cf6;
+}
+
+.profile-section button {
+    align-self: flex-start;
+    margin-top: 16px;
+}
+
+.profile-section .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.danger-section h2 {
+    color: #f87171;
+}
+
+@media (max-width: 600px) {
+    .profile-container {
+        padding: 24px;
+        margin: 16px auto;
+    }
+
+    .profile-section button {
+        width: 100%;
+    }
 }

@@ -1,36 +1,44 @@
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewpoint=width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roll | Sign Up</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+</head>
+<body>
+    <main class="form-container">
+        <h1>Create Account</h1>
+        <p>Join the Roll community.</p>
 
-        <title>Roll Sign-up</title>
-    </head>
-    <body>
-        <p style = "color: red;">${error}</p>
-        <div class="from-container">
-            <h1>Creat an account</h1>
-            <form action="signup" method="post">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name">
+        <% if (request.getAttribute("error") != null) { %>
+            <p class="error-message">${error}</p>
+        <% } %>
 
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username">
+        <form action="${pageContext.request.contextPath}/signup" method="post">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name"
+                   autocomplete="name" required>
 
-                <label for="email">Email</label>
-                <input type="text" id="email" name="email">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username"
+                   autocomplete="username" required>
 
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email"
+                   autocomplete="email" required>
 
-                <button type="submit">Sign-up</button>
-            </form>
-            <p>
-                Already have an account?
-                <a href="login.jsp">Login</a>
-            </p>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"
+                   autocomplete="new-password" required>
 
-            <a href="index.jsp">Back to home</a>
-        </div>    
-    </body>
+            <button type="submit">Create Account</button>
+        </form>
+
+        <p>Already have an account?</p>
+        <a href="${pageContext.request.contextPath}/login.jsp">Log in</a>
+    </main>
+</body>
 </html>

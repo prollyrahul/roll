@@ -1,32 +1,36 @@
 
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewpoint" content="WIdth = device-width, initial-scale = 1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roll | Login</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+</head>
+<body>
+    <main class="form-container">
+        <h1>Welcome Back</h1>
+        <p>Log in to your Roll account.</p>
 
-        <title>Login Roll</title>
-    </head>
-    <body>
-        <p style = "color : red;">${error}</p>
-        <div class="from-container">
-            <h1>login</h1>
+        <% if (request.getAttribute("error") != null) { %>
+            <p class="error-message">${error}</p>
+        <% } %>
 
-            <form action="login" method="post">
+        <form action="${pageContext.request.contextPath}/login" method="post">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username"
+                   autocomplete="username" required>
 
-                <label for="username">username</label>
-                <input type = "text" id="username" name="username">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"
+                   autocomplete="current-password" required>
 
-                <label for="password">password</label>
-                <input type = "password" id="password" name="password">
+            <button type="submit">Log in</button>
+        </form>
 
-                <button type="submit">Login</button>
-                
-            </form>
-            <p>Dont have an account?
-                <a href="signup.jsp">Sign-up</a>
-            </p>
-            <a href="index.jsp">Back to home</a>
-        </div>
-    </body>
+        <p>Don't have an account?</p>
+        <a href="${pageContext.request.contextPath}/signup.jsp">Create an account</a>
+    </main>
+</body>
 </html>

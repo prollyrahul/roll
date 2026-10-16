@@ -1,78 +1,94 @@
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Edit Profile</title>
-    </head>
-    <body>
-        <h1>Manage Your Account</h1>
-        <p style="color: red;">${error}</p>
-        <h2>Edit Profile</h2>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roll | Profile</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+</head>
+<body>
+    <main class="profile-container">
+        <h1>Your Profile</h1>
 
-        <form action="${pageContext.request.contextPath}/profile" method="post">
-            <input type="hidden" name="action" value="updateProfile">
+        <% if (request.getAttribute("error") != null) { %>
+            <p class="error-message">${error}</p>
+        <% } %>
 
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" value="${user.name}" required>
-            <br><br>
+        <% if (request.getAttribute("success") != null) { %>
+            <p class="success-message">${success}</p>
+        <% } %>
 
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" value="${user.username}" required>
-            <br><br>
+        <section class="profile-section">
+            <h2>Edit Profile</h2>
+            <form action="${pageContext.request.contextPath}/profile" method="post">
+                <input type="hidden" name="action" value="updateProfile">
 
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email" value="${user.email}" required>
-            <br><br>
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name"
+                       value="${user.name}" required>
 
-            <label for="profileCurrentPassword">Current Password:</label>
-            <input type="password" id="profileCurrentPassword" name="currentPassword" required>
-            <br><br>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username"
+                       value="${user.username}" required>
 
-            <button type="submit">Save Changes</button>
-        </form>
-        <hr>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email"
+                       value="${user.email}" required>
 
-        <h2>Change Password</h2>
+                <label for="currentPasswordProfile">Current Password</label>
+                <input type="password" id="currentPasswordProfile"
+                       name="currentPassword" autocomplete="current-password" required>
 
-        <form action="${pageContext.request.contextPath}/profile" method="post">
-            <input type="hidden" name="action" value="changePassword">
-            <br><br>
+                <button type="submit">Save Changes</button>
+            </form>
+        </section>
 
-            <label for="currentPassword">Current Password:</label>
-            <input type="password" id="currentPassword" name="currentPassword" required>
-            <br><br>
+        <section class="profile-section">
+            <h2>Change Password</h2>
+            <form action="${pageContext.request.contextPath}/profile" method="post">
+                <input type="hidden" name="action" value="changePassword">
 
-            <label for="newPassword">New Password:</label>
-            <input type="Password" id="newPassword" name="newPassword" required>
-            <br><br>
+                <label for="currentPassword">Current Password</label>
+                <input type="password" id="currentPassword"
+                       name="currentPassword" autocomplete="current-password" required>
 
-            <label for="confirmPassword">Confirm Password:</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" required>
-            <br><br>
-            <button type="submit">Save Changes</button>
-        </form>
+                <label for="newPassword">New Password</label>
+                <input type="password" id="newPassword"
+                       name="newPassword" autocomplete="new-password" required>
 
-        <h2>Delete Account</h2>
-        <p>This Action is permanent and cannot be undone</p>
+                <label for="confirmPassword">Confirm New Password</label>
+                <input type="password" id="confirmPassword"
+                       name="confirmPassword" autocomplete="new-password" required>
 
-        <form action="${pageContext.request.contextPath}/profile" method="post">
-            <input type="hidden" name="action" value="deleteAccount">
+                <button type="submit">Change Password</button>
+            </form>
+        </section>
 
-            <label for="deletePassword">Current Password:</label>
-            <input type="password" id="deletePassword" name="deletePassword" required>
-            <br><br>
+        <section class="profile-section danger-section">
+            <h2>Delete Account</h2>
+            <p>This action permanently deletes your account.</p>
 
-            <label for="confirmDelete">
-                <input type="checkbox" id="confirmDelete" name="confirmDelete" value="Yes" required>
-                I understand that my account will be permanently deleted.
-            </label>
+            <form action="${pageContext.request.contextPath}/profile" method="post">
+                <input type="hidden" name="action" value="deleteAccount">
 
-            <button type="submit">Delete My Account</button>
-        </form>
+                <label for="deletePassword">Current Password</label>
+                <input type="password" id="deletePassword"
+                       name="currentPassword" autocomplete="current-password" required>
 
-        <hr>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="confirmDelete" value="yes" required>
+                    I understand that my account will be deleted.
+                </label>
 
-        <a href="${pageContext.request.contextPath}/home">Back to Home</a>
+                <button type="submit" class="danger-button">Delete Account</button>
+            </form>
+        </section>
 
-    </body>
+        <div class="home-actions">
+            <a href="${pageContext.request.contextPath}/home">Back to Home</a>
+        </div>
+    </main>
+</body>
 </html>
